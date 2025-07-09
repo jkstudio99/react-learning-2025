@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { 
   Table, 
@@ -137,7 +138,7 @@ export const Users: React.FC = () => {
     {
       title: 'Action',
       key: 'action',
-      render: (_, record: User) => (
+      render: (_: unknown, record: User) => (
         <Space size="middle">
           <Button 
             type="text" 
