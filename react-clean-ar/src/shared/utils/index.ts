@@ -116,24 +116,31 @@ export const isAuthenticated = (): boolean => {
 };
 
 // Error handling utilities
-export const getErrorMessage = (error: any): string => {
-  if (error?.response?.data?.message) {
-    return error.response.data.message;
+export const getErrorMessage = (error: unknown): string => {
+  if (error && typeof error === "object" && "response" in error) {
+    const errorWithResponse = error as {
+      response?: { data?: { message?: string } };
+    };
+    if (errorWithResponse.response?.data?.message) {
+      return errorWithResponse.response.data.message;
+    }
   }
-  if (error?.message) {
-    return error.message;
+  if (error && typeof error === "object" && "message" in error) {
+    return (error as Error).message;
   }
   return "An unexpected error occurred";
 };
 
 // Debounce utility
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {
-  let timeout: NodeJS.Timeout;
+  let timeout: number | undefined;
   return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
+    if (timeout) {
+      clearTimeout(timeout);
+    }
     timeout = setTimeout(() => func(...args), wait);
   };
 };

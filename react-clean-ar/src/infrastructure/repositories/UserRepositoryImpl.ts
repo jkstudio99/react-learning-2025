@@ -1,13 +1,17 @@
-import { UserRepository } from "../../domain/repositories/UserRepository";
-import {
+import type { UserRepository } from "../../domain/repositories";
+import type {
   User,
   CreateUserRequest,
   UpdateUserRequest,
-} from "../../domain/entities/User";
-import { ApiClient } from "../api/ApiClient";
+} from "../../domain/entities";
+import { ApiClient } from "../api";
 
 export class UserRepositoryImpl implements UserRepository {
-  constructor(private apiClient: ApiClient) {}
+  private apiClient: ApiClient;
+
+  constructor(apiClient: ApiClient) {
+    this.apiClient = apiClient;
+  }
 
   async findAll(): Promise<User[]> {
     try {

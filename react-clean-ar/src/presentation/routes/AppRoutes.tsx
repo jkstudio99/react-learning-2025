@@ -1,8 +1,8 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Dashboard from '../pages/Dashboard/Dashboard'
-import Users from '../pages/Users/Users'
-import Home from '../pages/Home/Home'
+import Dashboard from '../pages/Dashboard/Dashboard.tsx'
+import Users from '../pages/Users/Users.tsx'
+import Home from '../pages/Home/Home.tsx'
 
 const AppRoutes: React.FC = () => {
   return (

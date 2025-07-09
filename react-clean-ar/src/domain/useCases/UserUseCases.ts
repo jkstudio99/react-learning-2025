@@ -1,8 +1,12 @@
-import { User, CreateUserRequest, UpdateUserRequest } from "../entities/User";
-import { UserRepository } from "../repositories/UserRepository";
+import type { User, CreateUserRequest, UpdateUserRequest } from "../entities";
+import type { UserRepository } from "../repositories";
 
 export class UserUseCases {
-  constructor(private userRepository: UserRepository) {}
+  private userRepository: UserRepository;
+
+  constructor(userRepository: UserRepository) {
+    this.userRepository = userRepository;
+  }
 
   async getAllUsers(): Promise<User[]> {
     try {

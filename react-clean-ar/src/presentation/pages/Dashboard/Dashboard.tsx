@@ -7,8 +7,8 @@ const { Title } = Typography
 const Dashboard: React.FC = () => {
   return (
     <div>
-      <Title level={2}>Dashboard</Title>
-      <Row gutter={[16, 16]}>
+      <Title level={2} className="purple-text">Dashboard</Title>
+      <Row gutter={[16, 16]} className="dashboard-stats">
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
