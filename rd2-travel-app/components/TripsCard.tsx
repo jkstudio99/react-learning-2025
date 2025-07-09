@@ -40,4 +40,6 @@ const TripsCard = ({id, name, location, imageUrl, tags, price}:TripCardProps) =>
   )
 }
 
-export default TripsCard
+export default 
+
+
